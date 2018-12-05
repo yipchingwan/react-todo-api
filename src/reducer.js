@@ -14,6 +14,17 @@ export default (state = initialState, { type, payload }) => {
         todos: payload
       }
 
+    case "CHANGE_STATUS":
+    const todos = state.todos.map(item=>{
+      if(item.id===payload.id){
+        item.status = payload.status
+      }
+      return item
+    })
+      return {
+        todos
+      }
+
     default:
       return state
   }
