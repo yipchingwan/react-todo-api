@@ -4,7 +4,7 @@ import Todos from '../components/Todos.js'
 const mapDispatchToProps = (dispatch) => ({
     changeStatus : (id, content, status) => {
         let myStatus = status;
-        if(myStatus==="active"){
+        if(status==="active"){
             myStatus = "completed"
         }
         else{
