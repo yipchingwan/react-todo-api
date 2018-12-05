@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+
 import { connect } from 'react-redux'
 import TodoInput from '../components/TodoInput.js'
 
