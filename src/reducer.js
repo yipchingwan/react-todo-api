@@ -1,4 +1,5 @@
 const initialState = {
+  isOnlyActive : false,
   todos: []
 }
 
@@ -6,12 +7,12 @@ export default (state = initialState, { type, payload }) => {
   switch (type) {
     case "ADD_TODO":
       return {
-        todos: [...state.todos, payload]
+        ...state,todos: [...state.todos, payload]
       }
 
     case "UPDATE_TODOS":
       return {
-        todos: payload
+        ...state,todos: payload
       }
 
     case "CHANGE_STATUS":
@@ -22,13 +23,15 @@ export default (state = initialState, { type, payload }) => {
       return item
     })
     return {
-      todos
+      ...state,todos
     }
 
     case "FILTER_COMPLETE":
-      return {todos : payload}
+      return {...state, todos : payload}
 
-    default:
+    case "SET_FILTER":
+      return {...state, isOnlyActive: payload}
+    default: 
       return state
   }
 }

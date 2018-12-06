@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+
 export default class TodoInput extends Component {
   onAdded = () => {
     const {input} = this.refs
@@ -11,10 +12,11 @@ export default class TodoInput extends Component {
   }
 
   onUpdateFilter = (e) => {
-    this.props.dispatch({
-      type : "SET_FILTER" , 
-      payload : !this.props.isOnlyActive
-    })
+    // this.props.dispatch({
+    //   type : "SET_FILTER" , 
+    //   payload : !this.props.isOnlyActive
+    // })
+    this.props.onUpdateFilter(!this.props.isOnlyActive)
   }
 
   render() {

@@ -45,7 +45,20 @@ const mapDispatchToProps = (dispatch) => ({
       })
 
     }
+  },
+  onUpdateFilter: (status) =>{
+    dispatch({
+      type : "SET_FILTER" , 
+      payload : status
+    })
   }
+})
+
+const mapStateToProps = state => ({
+  isOnlyActive : state.isOnlyActive,
+  todos: state.todos.filter(_=>{
+    return state.isOnlyActive ? _.status==='active' : true
+  })
 })
 // const mapDispatchToProps = {
 //   addNewTodo: newTodo => ({
@@ -53,4 +66,4 @@ const mapDispatchToProps = (dispatch) => ({
 //     payload: newTodo
 //   })
 // }
-export default connect(null, mapDispatchToProps)(TodoInput)
+export default connect(mapStateToProps, mapDispatchToProps)(TodoInput)
