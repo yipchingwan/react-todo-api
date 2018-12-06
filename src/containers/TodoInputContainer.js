@@ -21,6 +21,30 @@ const mapDispatchToProps = (dispatch) => ({
         payload: {id, status, content}
       })
     })
+  },
+
+  taskFilter : status =>{
+    if(status){
+      fetch("http://localhost:8080/api/todos/search/statusOfTodos?status=active", {mode: 'cors'})
+      .then(res => res.json())
+      .then(res => {
+        dispatch({
+          type: "FILTER_COMPLETE",
+          payload: res._embedded.todos
+        })
+      })
+    }
+    else{
+      fetch("http://localhost:8080/api/todos/search/statusOfTodos?status=completed,active", {mode: 'cors'})
+      .then(res => res.json())
+      .then(res => {
+        dispatch({
+          type: "FILTER_COMPLETE",
+          payload: res._embedded.todos
+        })
+      })
+
+    }
   }
 })
 // const mapDispatchToProps = {

@@ -21,9 +21,12 @@ export default (state = initialState, { type, payload }) => {
       }
       return item
     })
-      return {
-        todos
-      }
+    return {
+      todos
+    }
+
+    case "FILTER_COMPLETE":
+      return {todos : payload}
 
     default:
       return state
